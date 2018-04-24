@@ -1,0 +1,10 @@
+- hosts: ses
+  remote_user: root
+
+  roles:
+#    - base
+#    - authorized_keys
+#    - docker
+    - nginx
+    - mysql
+    - wordpress

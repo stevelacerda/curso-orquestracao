@@ -1,0 +1,17 @@
+- name: Enable nginx PPA
+  apt_repository:
+    repo: "ppa:nginx/stable"
+    state: present
+    update_cache: yes
+    filename: 'nginx'
+  tags: nginx
+
+- name: Install webserver packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+    install_recommends: yes
+  with_items:
+    - nginx
+    - php7.0-fpm
+  tags: nginx

@@ -1,0 +1,10 @@
+- name: Install MySQL packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+    install_recommends: yes
+  with_items:
+    - mysql-server
+    - python-mysqldb # Ansible
+    - python3-mysqldb # Ansible
+  tags: mysql

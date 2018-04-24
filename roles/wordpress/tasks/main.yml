@@ -1,0 +1,20 @@
+- name: Create MySQL database
+  mysql_db:
+    name: wordpress
+    state: present
+
+- name: Create MySQL user
+  mysql_user:
+    name: wordpress
+    host: localhost
+    password: "Batatinha"
+    priv: "wordpress.*:ALL"
+    state: present
+
+- name: Extract WordPress
+  unarchive:
+    src: https://br.wordpress.org/wordpress-4.9.5-pt_BR.tar.gz
+    dest: /var/www/html
+    extra_opts: [--strip-components=1]
+    remote_src: yes
+
